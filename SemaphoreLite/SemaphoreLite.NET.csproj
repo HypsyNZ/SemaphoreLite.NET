@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Version>1.0.5.1</Version>
+    <FileVersion>1.0.5.1</FileVersion>
+    <AssemblyVersion>1.0.5.1</AssemblyVersion>
+    <Authors>S Christison</Authors>
+    <Company>S Christison</Company>
+    <Copyright>S Christison ©2022</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>X:\BT.snk</AssemblyOriginatorKeyFile>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <PropertyGroup> 
+    <IsPublishable>False</IsPublishable>
+    <PackageId>SemaphoreLite.NET</PackageId>
+    <Description>A Lightweight Semaphore</Description>
+    <PackageProjectUrl>https://github.com/HypsyNZ/SemaphoreLite.NET</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/HypsyNZ/SemaphoreLite.NET</RepositoryUrl>
+    <BaseOutputPath>bin\</BaseOutputPath>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <DebugType>embedded</DebugType>
+    <PackageReleaseNotes>https://github.com/HypsyNZ/SemaphoreLite.NET/tree/main/SemaphoreLite.NET</PackageReleaseNotes>
+    <PackageTags>semiphore, lock, simple, await, async, thread, safe, wait, timeout</PackageTags>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+  </ItemGroup>
+</Project>
