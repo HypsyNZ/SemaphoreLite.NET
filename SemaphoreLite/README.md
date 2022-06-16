@@ -1,7 +1,4 @@
-### Version 1.0.4.6
-- [x] Documentation
-
-### Version 1.0.4.5
+### Version 1.0.5.0
 - [x] `IsTakenAsync` (Default)
 - [x] `IsTakenAsyncNoDelay` (Uses More CPU for very little benefit)
 - [x] `IsTakenAsyncUseOldDelay` (Uses Task.Delay(1)) for the Delay)
