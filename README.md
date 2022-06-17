@@ -5,7 +5,7 @@ using SemaphoreLite;
 
 ![k](https://user-images.githubusercontent.com/54571583/174004545-eb25d721-760f-4cdf-9920-df44035737d0.png)
 
-# [Usage Example](https://github.com/HypsyNZ/SemaphoreLite/blob/main/Example/Example/Program.cs)
+# [Usage Example](https://github.com/HypsyNZ/SemaphoreLite.NET/blob/main/Example/Example/Program.cs)
 
 Create a new `SemaphoreLight`
 
