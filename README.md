@@ -5,12 +5,6 @@ using SemaphoreLite;
 
 ![k](https://user-images.githubusercontent.com/54571583/174004545-eb25d721-760f-4cdf-9920-df44035737d0.png)
 
-Method | Speed | Intended Usage | CPU Impact |
-|---------| -------|-------------------|--------------|
-|IsTakenAsync() | Normal | Everything | None |
-| IsTakenAsyncFastDelay() | Fast | Operations you need to return in roughly `1 Millisecond` | High |
-| IsTakenAsyncNoDelay() | Fastest | Operations you need to return "Instantly" | Highest |
-
 # [Usage Example](https://github.com/HypsyNZ/SemaphoreLite/blob/main/Example/Example/Program.cs)
 
 Create a new `SemaphoreLight`
@@ -44,10 +38,6 @@ Release the `SemaphoreLight` when your `Task` returns
 ```cs
 light.Release();
 ```
-
-## Optional
-
-There are options other than `IsTakenAsync(SomeAsyncTask)` with the same parameters, they won't add a `One Millisecond` Delay between attempts, However it isn't recommended to do this unless you absolutely need the extra `One Millisecond` because the amount of CPU usage required is considerable.
 
 ## Ordering/Notes
 

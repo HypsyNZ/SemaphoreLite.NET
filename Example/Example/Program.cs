@@ -41,6 +41,8 @@ namespace ConsoleApp1
             {
                 while (true)
                 {
+                    await Task.Delay(1).ConfigureAwait(false);
+
                     var callerRequiredToReleaseSemiphore = await semaphoreLight.IsTakenAsync(SomeAsyncTask, false).ConfigureAwait(false);
                     if (callerRequiredToReleaseSemiphore)
                     {
@@ -50,10 +52,12 @@ namespace ConsoleApp1
                 }
             });
 
-            _ = Task.Run(() =>
+            _ = Task.Run(async () =>
             {
                 while (true)
                 {
+                    await Task.Delay(1).ConfigureAwait(false);
+
                     var callerRequiredToReleaseSemiphore = semaphoreLight.IsTakenAsync(SomeOtherTaskAsync).Result;
                     if (callerRequiredToReleaseSemiphore)
                     {
@@ -69,25 +73,25 @@ namespace ConsoleApp1
                 {
                     Console.SetCursorPosition(0, 0);
                     Console.Write("One: " + testCountOne + "| Two: " + testCountTwo);
-                    await Task.Delay(1000).ConfigureAwait(false);
+                    await Task.Delay(1).ConfigureAwait(false);
                 }
             });
 
             Console.ReadLine();
         }
 
-        private static Task SomeAsyncTask()
+        private static async Task SomeAsyncTask()
         {
+            await Task.Delay(1);
             // Inside the Critical Section
             testCountOne++;
-            return Task.CompletedTask;
         }
 
-        private static Task SomeOtherTaskAsync()
+        private static async Task SomeOtherTaskAsync()
         {
+            await Task.Delay(1);
             // Inside the Critical Section
             testCountTwo++;
-            return Task.CompletedTask;
         }
     }
 }
