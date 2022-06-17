@@ -35,7 +35,6 @@ namespace SemaphoreLite
     {
         private volatile bool _taken = false;
         private readonly object _lock = new object();
-        protected readonly Stopwatch _sw = new Stopwatch();
 
         /// <summary>
         /// Returns True when the Caller has Taken the Semiphore and the Task has Ran to Completion inside the Critical Section
