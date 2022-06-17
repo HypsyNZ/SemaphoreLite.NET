@@ -1,5 +1,5 @@
 ### Version 1.0.5.1
-- [x] Change default behavior of Methods so the default method uses minimimal CPU usage
+- [x] Change default behavior of Methods so the default method uses minimal CPU usage
 - [x] `IsTakenAsync` (Default)
 - [x] `IsTakenAsyncUseFastDelay` (Uses Delay(1)) for the Delay, Faster, Uses More CPU)
 - [x] `IsTakenAsyncNoDelay` (Slightly Faster than NewDelay, but uses A lot more CPU)
