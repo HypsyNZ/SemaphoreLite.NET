@@ -70,11 +70,13 @@ namespace SemaphoreLite
         }
 
         /// <summary>
-        /// <para>This method doesn't use ANY Delay and as a result it goes much faster but at the cost of CPU usage, Consider using <see href="IsTakenAsync()"/> instead</para>
+        /// <para>READ BEFORE YOU START USING</para>
         /// Returns True when the Caller has Taken the Semiphore and the Task has Ran to Completion inside the Critical Section
         /// <para>You <see href="MUST"/> call <see href="Release()"/> when you are done with your work or the Semiphore will block forever</para>
         /// <para>This uses more CPU then probably necessary for most applications, Consider using <see href="IsTakenAsync()"/> instead</para>
         /// <para>This is NOT better than <see href="IsTakenAsync()"/>, it is just useful for certain applications</para>
+        /// <para>It is not recommended to use this Method all the time, Only when you need something "Instantly"</para>
+        /// <para>This method doesn't use <see href="Task.Delay(1)"/> or <see href="Delay()"/> and as a result it goes much faster but at the cost of CPU usage, Consider using <see href="IsTakenAsync()"/> instead</para>
         /// </summary>
         /// <param name="theTask">The Task that will be completed if the Semiphore is Taken by the Caller</param>
         /// <param name="configureAwaiter">Configure the awaiter for the Task running inside the Critical Section</param>
@@ -101,9 +103,12 @@ namespace SemaphoreLite
         }
 
         /// <summary>
-        /// <para>This method doesn't use <see href="Task.Delay(1)"/> or <see href="Delay()"/> and as a result it goes much faster but at the cost of CPU usage, Consider using <see href="IsTakenAsync()"/> instead</para>
+        /// <para>READ BEFORE YOU START USING</para>
         /// Returns True when the Caller has Taken the Semiphore and the Task has Ran to Completion inside the Critical Section
         /// <para>You <see href="MUST"/> call <see href="Release()"/> when you are done with your work or the Semiphore will block forever</para>
+        /// <para>This is NOT better than <see href="IsTakenAsync()"/>, it is just useful for certain types of applications</para>
+        /// <para>It is not recommended to use this Method all the time, Only when you need something "Instantly"</para>
+        /// <para>This method doesn't use <see href="Task.Delay(1)"/> and uses custom made <see href="Delay()"/> instead and as a result it goes much faster but at the cost of CPU usage, Consider using <see href="IsTakenAsync()"/> instead</para>
         /// </summary>
         /// <param name="theTask">The Task that will be completed if the Semiphore is Taken by the Caller</param>
         /// <param name="configureAwaiter">Configure the awaiter for the Task running inside the Critical Section</param>
