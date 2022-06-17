@@ -1,3 +1,9 @@
+### Version 1.0.6.0
+- [x] Remove Delays
+- [x] Remove Extra Methods
+- [x] Improve Example
+- [x] `SemaphoreLight` will now go as fast as you want it to go
+
 ### Version 1.0.5.5
 - [x] Rename Method
 - [x] Finalize Documentation
