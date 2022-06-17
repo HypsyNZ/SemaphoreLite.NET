@@ -113,7 +113,7 @@ namespace SemaphoreLite
         /// <param name="theTask">The Task that will be completed if the Semiphore is Taken by the Caller</param>
         /// <param name="configureAwaiter">Configure the awaiter for the Task running inside the Critical Section</param>
         /// <returns>True if the Caller is required to <see href="Release()"/> the Semiphore for the next Caller</returns>
-        public async Task<bool> IsTakenAsyncUseFastDelay(Func<Task> theTask, bool configureAwaiter = false)
+        public async Task<bool> IsTakenAsyncFastDelay(Func<Task> theTask, bool configureAwaiter = false)
         {
             Delay();
 

@@ -1,11 +1,15 @@
-# SemaphoreLite.NET
-
 ```cs
 using SemaphoreLite;
 ```
 [![Wiki](https://user-images.githubusercontent.com/54571583/173321360-737e4e55-0e46-40aa-ac4e-0ac01875ce96.png)](https://github.com/HypsyNZ/SemaphoreLite.NET/wiki) [![Nuget](https://img.shields.io/nuget/v/SemaphoreLite.NET)](https://www.nuget.org/packages/SemaphoreLite.NET/)
 
-![k](https://user-images.githubusercontent.com/54571583/174019426-b9822b0e-91da-4ed1-9e95-021522fb30e9.png)
+![k](https://user-images.githubusercontent.com/54571583/174004545-eb25d721-760f-4cdf-9920-df44035737d0.png)
+
+Method | Speed | Intended Usage | CPU Impact |
+|---------| -------|-------------------|--------------|
+|IsTakenAsync() | Normal | Everything | None |
+| IsTakenAsyncFastDelay() | Fast | Operations you need to return in roughly `1 Millisecond` | High |
+| IsTakenAsyncNoDelay() | Fastest | Operations you need to return "Instantly" | Highest |
 
 # [Usage Example](https://github.com/HypsyNZ/SemaphoreLite/blob/main/Example/Example/Program.cs)
 
@@ -43,7 +47,7 @@ light.Release();
 
 ## Optional
 
-You can also call `IsTakenAsyncNoDelay()` in place of `IsTakenAsync(SomeAsyncTask)` with the same parameters, this won't add a `One Millisecond` Delay between attempts, However it isn't recommended to do this unless you absolutely need the extra `One Millisecond` because the amount of CPU usage required is considerable.
+There are options other than `IsTakenAsync(SomeAsyncTask)` with the same parameters, they won't add a `One Millisecond` Delay between attempts, However it isn't recommended to do this unless you absolutely need the extra `One Millisecond` because the amount of CPU usage required is considerable.
 
 ## Ordering/Notes
 
