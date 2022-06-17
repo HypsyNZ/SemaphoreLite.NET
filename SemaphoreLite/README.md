@@ -1,3 +1,6 @@
+### Version 1.0.5.4
+- [x] Documentation
+
 ### Version 1.0.5.1
 - [x] Change default behavior of Methods so the default method uses minimal CPU usage
 - [x] `IsTakenAsync` (Default)
