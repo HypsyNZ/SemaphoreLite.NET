@@ -48,7 +48,7 @@ namespace SemaphoreLite
         /// <returns>True if the Caller is required to <see href="Release()"/> the Semiphore for the next Caller</returns>
         public async Task<bool> IsTakenAsync(Func<Task> theTask, bool configureAwaiter = false)
         {
-            Delay();
+            await Task.Delay(1).ConfigureAwait(configureAwaiter);
 
             if (_taken)
             {
@@ -57,6 +57,11 @@ namespace SemaphoreLite
 
             lock (_lock)
             {
+                if (_taken)
+                {
+                    return false;
+                }
+
                 _taken = true;
             }
 
@@ -65,6 +70,7 @@ namespace SemaphoreLite
         }
 
         /// <summary>
+        /// <para>This method doesn't use ANY Delay and as a result it goes much faster but at the cost of CPU usage, Consider using <see href="IsTakenAsync()"/> instead</para>
         /// Returns True when the Caller has Taken the Semiphore and the Task has Ran to Completion inside the Critical Section
         /// <para>You <see href="MUST"/> call <see href="Release()"/> when you are done with your work or the Semiphore will block forever</para>
         /// <para>This uses more CPU then probably necessary for most applications, Consider using <see href="IsTakenAsync()"/> instead</para>
@@ -82,6 +88,11 @@ namespace SemaphoreLite
 
             lock (_lock)
             {
+                if (_taken)
+                {
+                    return false;
+                }
+
                 _taken = true;
             }
 
@@ -90,16 +101,16 @@ namespace SemaphoreLite
         }
 
         /// <summary>
-        /// <para>Fallback Method: There is overhead when using <see href="Task.Delay(1)"/> that adds 10-15ms to any Delay, If you are okay with this or require this then use this method instead, It is functionally the same aside from which delay it uses</para>
+        /// <para>This method doesn't use <see href="Task.Delay(1)"/> or <see href="Delay()"/> and as a result it goes much faster but at the cost of CPU usage, Consider using <see href="IsTakenAsync()"/> instead</para>
         /// Returns True when the Caller has Taken the Semiphore and the Task has Ran to Completion inside the Critical Section
         /// <para>You <see href="MUST"/> call <see href="Release()"/> when you are done with your work or the Semiphore will block forever</para>
         /// </summary>
         /// <param name="theTask">The Task that will be completed if the Semiphore is Taken by the Caller</param>
         /// <param name="configureAwaiter">Configure the awaiter for the Task running inside the Critical Section</param>
         /// <returns>True if the Caller is required to <see href="Release()"/> the Semiphore for the next Caller</returns>
-        public async Task<bool> IsTakenAsyncUseOldDelay(Func<Task> theTask, bool configureAwaiter = false)
+        public async Task<bool> IsTakenAsyncUseFastDelay(Func<Task> theTask, bool configureAwaiter = false)
         {
-            await Task.Delay(1).ConfigureAwait(configureAwaiter);
+            Delay();
 
             if (_taken)
             {
@@ -108,6 +119,11 @@ namespace SemaphoreLite
 
             lock (_lock)
             {
+                if (_taken)
+                {
+                    return false;
+                }
+
                 _taken = true;
             }
 

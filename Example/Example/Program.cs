@@ -35,12 +35,6 @@ namespace ConsoleApp1
         private static int testCountOne = 0;
         private static int testCountTwo = 0;
 
-        private static async Task SomeAsyncTask()
-        {
-            // Inside the Critical Section
-            await Task.Delay(100).ConfigureAwait(false);
-        }
-
         private static void Main(string[] args)
         {
             _ = Task.Run(async () =>
@@ -50,7 +44,6 @@ namespace ConsoleApp1
                     var callerRequiredToReleaseSemiphore = await semaphoreLight.IsTakenAsync(SomeAsyncTask, false).ConfigureAwait(false);
                     if (callerRequiredToReleaseSemiphore)
                     {
-                        testCountOne++;
                         // You can also do work here before you release, This is also inside the Critical Section
                         semaphoreLight.Release();
                     }
@@ -64,7 +57,6 @@ namespace ConsoleApp1
                     var callerRequiredToReleaseSemiphore = semaphoreLight.IsTakenAsync(SomeOtherTaskAsync).Result;
                     if (callerRequiredToReleaseSemiphore)
                     {
-                        testCountTwo++;
                         // You can also do work here before you release, This is also inside the Critical Section
                         semaphoreLight.Release();
                     }
@@ -84,10 +76,18 @@ namespace ConsoleApp1
             Console.ReadLine();
         }
 
-        private static async Task SomeOtherTaskAsync()
+        private static Task SomeAsyncTask()
         {
             // Inside the Critical Section
-            await Task.Delay(100).ConfigureAwait(false);
+            testCountOne++;
+            return Task.CompletedTask;
+        }
+
+        private static Task SomeOtherTaskAsync()
+        {
+            // Inside the Critical Section
+            testCountTwo++;
+            return Task.CompletedTask;
         }
     }
 }
