@@ -1,3 +1,6 @@
+### Version 1.0.6.2
+- [x] LangVersion `10`
+
 ### Version 1.0.6.1
 - [x] Remove Delays
 - [x] Remove Extra Methods
